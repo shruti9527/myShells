@@ -1,0 +1,12 @@
+Docker login
+
+Docker build -t sp3002/repo:tag .
+
+Docker run sp3002/repo:tag
+
+Docker push sp3002/repo:tag
+
+
+
+for html
+Docker run -p 9802:80 sp3002/repo:tag
