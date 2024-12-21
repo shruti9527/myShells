@@ -1,0 +1,11 @@
+#!/bin/bash
+
+function myfun {
+
+echo "This is my first function"
+
+}
+
+
+
+myfun

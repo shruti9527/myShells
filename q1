@@ -1,0 +1,11 @@
+#!/bin/bash
+
+A=23
+
+if [ "$A" -gt 25 ]; then
+echo "Greater than 25"
+
+else
+echo "Less than 25"
+
+fi

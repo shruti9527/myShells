@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+str="Hello"
+
+myfun() {
+local $str=$1
+sl=${#str}
+echo $sl
+
+}
+
+myfun $str

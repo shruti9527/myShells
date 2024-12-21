@@ -1,0 +1,12 @@
+#!/bin/bash
+
+FILE="C:\Users\SHRUTI\myScripts\students.txt"
+
+for num in $(cat $FILE)
+
+do
+echo "Number is $num"
+done
+
+
+

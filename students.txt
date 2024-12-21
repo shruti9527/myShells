@@ -1,0 +1,7 @@
+2 Rashi 10 10 10 
+3 Sonal 10 10 10
+4 Gaurav 10 10 10
+5 Saurabh 10 10 10
+6 Raj 10 10 10
+7 Harsh 10 10 10
+1 Shruti 10 10 10

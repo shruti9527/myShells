@@ -1,0 +1,18 @@
+#!bin/bash
+
+str1="Good "
+str2="Evening"
+
+function concatString {
+
+local str1=$1
+local str2=$2
+
+echo $str1 $str2
+
+}
+
+
+concatString $str1 $str2
+
+

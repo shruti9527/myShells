@@ -1,0 +1,112 @@
+#!/bin/bash
+
+FILE="students.txt"
+
+# Ensure the file exists
+touch $FILE
+
+# Function to display the menu
+display_menu() {
+    echo "\nStudent CRUD Operations"
+    echo "1. Add a Student"
+    echo "2. View All Students"
+    echo "3. Update a Student"
+    echo "4. Delete a Student"
+    echo "5. Search for a Student"
+    echo "6. Exit"
+    echo -n "Choose an option: "
+}
+
+# Add a student
+add_student() {
+    echo -n "Enter Student Number: "
+    read number
+    echo -n "Enter Student Name: "
+    read name
+    echo -n "Enter Marks1: "
+    read marks1
+    echo -n "Enter Marks2: "
+    read marks2
+    echo -n "Enter Marks3: "
+    read marks3
+
+    echo "$number $name $marks1 $marks2 $marks3" >> $FILE
+    echo "Student added successfully."
+}
+
+# View all students
+view_students() {
+    if [ ! -s $FILE ]; then
+        echo "No student records found."
+    else
+        echo "\nStudent Records:"
+        echo "Number Name Marks1 Marks2 Marks3"
+        cat $FILE
+    fi
+}
+
+# Update a student
+update_student() {
+    echo -n "Enter Student Number to update: "
+    read number
+
+    if grep -q "^$number " $FILE; then
+        echo -n "Enter New Name: "
+        read name
+        echo -n "Enter New Marks1: "
+        read marks1
+        echo -n "Enter New Marks2: "
+        read marks2
+        echo -n "Enter New Marks3: "
+        read marks3
+
+        grep -v "^$number " $FILE > temp.txt && mv temp.txt $FILE
+        echo "$number $name $marks1 $marks2 $marks3" >> $FILE
+
+        echo "Student record updated successfully."
+    else
+        echo "Student with number $number not found."
+    fi
+}
+
+# Delete a student
+delete_student() {
+    echo -n "Enter Student Number to delete: "
+    read number
+
+    if grep -q "^$number " $FILE; then
+        grep -v "^$number " $FILE > temp.txt && mv temp.txt $FILE
+        echo "Student record deleted successfully."
+    else
+        echo "Student with number $number not found."
+    fi
+}
+
+# Search for a student
+search_student() {
+    echo -n "Enter Student Number to search: "
+    read number
+
+    if grep -q "^$number " $FILE; then
+        echo "Student record found:"
+        grep "^$number " $FILE
+    else
+        echo "Student with number $number not found."
+    fi
+}
+
+# Main loop
+while true; do
+    display_menu
+    read choice
+    case $choice in
+        1) add_student ;;
+        2) view_students ;;
+        3) update_student ;;
+        4) delete_student ;;
+        5) search_student ;;
+        6) echo "Exiting."; exit 0 ;;
+        *) echo "Invalid option. Please try again." ;;
+    esac
+done
+
